@@ -12,6 +12,7 @@ import {
   SheetClose,
   SheetFooter,
 } from '@/components/ui/sheet';
+import { useRef } from 'react';
 
 // A more robust link component for the mobile menu for better styling and tap area
 const MobileNavLink = ({ href, icon, title, subtitle }: { href: string; icon: React.ReactNode; title: string; subtitle: string; }) => (
@@ -27,10 +28,15 @@ const MobileNavLink = ({ href, icon, title, subtitle }: { href: string; icon: Re
 );
 
 export function Header() {
+      const formRef = useRef<HTMLDivElement>(null);
   const contact = {
     phone: '+63 919 067 7096',
     email: 'apvelandria@rdrealty.com.ph',
     location: 'Cagampang Ext. Brgy. Bula, General Santos City',
+  };
+
+    const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -64,7 +70,7 @@ export function Header() {
             <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <MapPin size={16} className="text-slate-500" /> {contact.location}
             </div>
-            <Button asChild size="lg" className="ml-4 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg transition-shadow">
+          <Button onClick={() => scrollToSection(formRef)} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-full">
                 <a href="#inquire">Inquire Now</a>
             </Button>
         </div>
