@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// 1. Define your data source (e.g., PostgreSQL, MySQL, SQLite)
+datasource db {
+  provider = "postgresql" // Example: using PostgreSQL
+  url      = env("DATABASE_URL")
+}
+
+// 2. Define your client generator
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 3. Define the model for your Investment Inquiry form
+model InvestmentInquiry {
+  // --- Standard Fields ---
+  id        Int      @id @default(autoincrement()) // Primary Key
+  createdAt DateTime @default(now()) // Automatically set on creation
+  updatedAt DateTime @updatedAt // Automatically set on update
+
+  // --- Company Information (from your form) ---
+  companyName    String
+  companyAddress String @db.Text // Use @db.Text for longer textarea content
+  businessType   String
+
+  // --- Contact Information (from your form) ---
+  contactPerson   String
+  contactEmail    String  @unique // It's a good practice to make email unique
+  contactMobile   String
+  contactLandline String? // Marked as optional since it's not a required field in the form
+
+  // --- Project Details (from your form) ---
+  productsServices     String  @db.Text
+  spaceRequirements    String  @db.Text
+  needsAndExpectations String? @db.Text // Marked as optional as in your 'formFields' array
+
+  // --- Fields from the interface but not in the formFields array ---
+  // These are included as optional fields.
+  projectedEmployees String?
+  operationsTimeline String?
+  utilityNeeds       String?
+}

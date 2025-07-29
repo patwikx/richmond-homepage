@@ -6,8 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail, Users, ChevronDown, Play, Building, User, MailCheck, Briefcase, BarChart, Clock, Maximize, FileText } from 'lucide-react';
+import { MapPin, Phone, Users, ChevronDown, Building, User, MailCheck, Briefcase, Maximize, FileText } from 'lucide-react';
 import Image from 'next/image';
+import { Header } from '@/components/header';
+import { createInvestmentInquiry } from '@/actions/actions';
+
 
 // Unified interface based on the provided image
 interface InvestmentInquiry {
@@ -68,6 +71,8 @@ export default function Home() {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const galleryRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
@@ -82,43 +87,41 @@ export default function Home() {
     setInquiryData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple validation: check if all required fields are filled
+    setError(null); // Clear previous errors
+
+    // Client-side validation to check for empty required fields
     const isFormValid = formFields
         .filter(field => field.required)
         .every(field => inquiryData[field.id as keyof InvestmentInquiry].trim() !== '');
 
-    if (isFormValid) {
+    if (!isFormValid) {
+        setError("Please fill in all required fields.");
+        return;
+    }
+
+    setIsLoading(true);
+
+    // Call the server action
+    const result = await createInvestmentInquiry(inquiryData);
+
+    setIsLoading(false);
+
+    if (result.success) {
         setFormSubmitted(true);
+        // Scroll to the video section after a short delay
         setTimeout(() => scrollToSection(videoRef), 500);
     } else {
-        // You can add a more sophisticated error message here
-        alert("Please fill in all required fields.");
+        // Display the error message from the server
+        setError(result.message);
     }
   };
 
   return (
     <div className="font-sans">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Image src='/rlii.png' alt='Image' width={100} height={50} />
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">Richmond Land Innovations, Inc.</h1>
-                <p className="text-sm text-gray-600">General Santos City, Philippines</p>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-6 text-sm text-gray-600">
-              <div className="flex items-center space-x-1"><MapPin className="h-4 w-4" /><span>General Santos City</span></div>
-              <div className="flex items-center space-x-1"><Phone className="h-4 w-4" /><span>+63 83 XXX XXXX</span></div>
-              <div className="flex items-center space-x-1"><Mail className="h-4 w-4" /><span>info@richmondland.ph</span></div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Gallery Section */}
       <section ref={galleryRef} className="py-10 bg-gray-50">
@@ -169,16 +172,23 @@ export default function Home() {
                           type={field.type || 'text'}
                           required={field.required}
                           className={`h-12 ${field.component === 'textarea' ? 'min-h-[100px]' : ''}`}
-                          disabled={formSubmitted}
+                          disabled={formSubmitted || isLoading}
                         />
                       </div>
                     )
                   })}
                 </div>
 
+                {/* Display server-side error messages */}
+                {error && (
+                    <div className="text-center p-3 bg-red-50 rounded-lg border border-red-200">
+                        <p className="text-red-700 font-medium">{error}</p>
+                    </div>
+                )}
+
                 {!formSubmitted ? (
-                  <Button type="submit" className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white text-lg">
-                    Submit Inquiry
+                  <Button type="submit" className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white text-lg" disabled={isLoading}>
+                    {isLoading ? 'Submitting...' : 'Submit Inquiry'}
                   </Button>
                 ) : (
                   <div className="text-center p-4 bg-green-50 rounded-lg border border-green-200">
