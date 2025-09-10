@@ -31,21 +31,22 @@ interface InvestmentInquiry {
 
 const propertyImages = [
   // ... (your propertyImages array remains unchanged)
-  { id: 1, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQeoYn5ROxmcCNEbRWDAps07ayQ8BYUokdZtM3", title: "Prime Commercial Lot A", description: "Strategic location with high foot traffic" },
-  { id: 2, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQCslsPSdUxYEVqTK4boXtQuMPAc7zJmgw8S6R", title: "Residential Development Site", description: "Perfect for housing projects" },
-  { id: 3, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQNTyKWpllVaYuk5J6UZjEx2er71hSvWTqnypi", title: "Industrial Complex", description: "Large-scale manufacturing facility" },
-  { id: 4, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQ61j73VZxJNfqYTMLmZ50hboVuGFEarSO3PI4", title: "Mixed-Use Development", description: "Commercial and residential combined" },
-  { id: 5, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQ2fM7siHm4In8NcrahiMvBJsHgd0eKoqYZmXS", title: "Waterfront Property", description: "Exclusive coastal development" },
-  { id: 6, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQOGM88NgP7JvrEVds4RjxMLq685klUwZInmAT", title: "Business District Lot", description: "Heart of the commercial district" },
-  { id: 7, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQhNhXlYQpBPLtFouM7AlbIXcTdjK4aNhOZUVk", title: "Suburban Development", description: "Family-friendly neighborhood" },
-  { id: 8, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQcjQ6Cv9IyEzVacXnWLsSGmPJ6BUhO1QRjF7d", title: "Retail Space Complex", description: "High-visibility shopping area" },
-  { id: 9, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQUmMeTVDnkjNSFhOYuV1ec9tQbTXCJBR82iw0", title: "Office Building Site", description: "Modern corporate headquarters" },
-  { id: 10, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQYScebvnqJx02gDv7PTWrUH3fdpc6h9aYGysK", title: "Agricultural Land", description: "Fertile farming opportunity" },
-  { id: 11, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQmX0r27WuP0OcDXb43Vyre1ksvdKBzloJSHZT", title: "Future City Center", description: "Next-generation urban planning" },
-  { id: 12, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQ5Wyyurba9EoQMnWcTkJdNxHwRPj0l1vGy3g4", title: "Future City Center", description: "Next-generation urban planning" },
-  { id: 13, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQTB6N2KppzMwWGZVjX8Pa3Bi9QfODKyR27emJ", title: "Future City Center", description: "Next-generation urban planning" },
-  { id: 14, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQhU1aFzQpBPLtFouM7AlbIXcTdjK4aNhOZUVk", title: "Future City Center", description: "Next-generation urban planning" },
-  { id: 15, url: "https://zhdelzq5lo.ufs.sh/f/5VWIaIba9EoQDlyvKASzH36sNMfEr095xaIgC4lwjhmykJPu", title: "Future City Center", description: "Next-generation urban planning" }
+  { id: 1, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVXWuNpe4SQFwVzqytEldgvRNPo3K4W5XnAihe", title: "Prime Commercial Lot A", description: "Strategic location with high foot traffic" },
+  { id: 2, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVje1gIFJ2aSpFg1cK04bxM5IZTu7s6YJGtEdr", title: "Residential Development Site", description: "Perfect for housing projects" },
+  { id: 3, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVp8d4FktocgCVv26wIW8QGpHbjafKeFZNryt4", title: "Industrial Complex", description: "Large-scale manufacturing facility" },
+  { id: 4, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVMpOrmAZ8BfC9TRnlOyruIh1eYQsHA06toK4Z", title: "Mixed-Use Development", description: "Commercial and residential combined" },
+  { id: 5, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVFHp073M3dnPblEMsZy9DJIG2VjNm0hxCgpct", title: "Waterfront Property", description: "Exclusive coastal development" },
+  { id: 6, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVP3x4Kgc5fO0F7gxzCkqZ8RdsrnA1myiuwj6h", title: "Business District Lot", description: "Heart of the commercial district" },
+  { id: 7, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVt0OTwHjw5l6GOMqJ8BvUx9TPcSRoXumrhYg3", title: "Suburban Development", description: "Family-friendly neighborhood" },
+  { id: 8, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVVg8ocgnl8YJnfQXZwHKRbB5kUFVSIov20cma", title: "Retail Space Complex", description: "High-visibility shopping area" },
+  { id: 9, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCV4kr5cahI5Gj17ZrfROWwDqXuKzv608cyQAoh", title: "Office Building Site", description: "Modern corporate headquarters" },
+  { id: 10, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVqZtHL4OYmTRZsnLpKSBqrkzOi6PdXaFC9Jlc", title: "Agricultural Land", description: "Fertile farming opportunity" },
+  { id: 11, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVcVWr38p9o4LvgUGbQwfjl5t3FziTsKSZAda9", title: "Future City Center", description: "Next-generation urban planning" },
+  { id: 12, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVIwP3vg2IFANEyS7PYa4J13wKirZxo9nqbC0s", title: "Future City Center", description: "Next-generation urban planning" },
+  { id: 13, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVtdPu3Zjw5l6GOMqJ8BvUx9TPcSRoXumrhYg3", title: "Future City Center", description: "Next-generation urban planning" },
+  { id: 14, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVnmCO37GcgRiGV7Nayfozm3Yl12uEZtA589hb", title: "Future City Center", description: "Next-generation urban planning" },
+  { id: 15, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVp3PkfgtocgCVv26wIW8QGpHbjafKeFZNryt4", title: "Future City Center", description: "Next-generation urban planning" },
+    { id: 16, url: "https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVM6NfdQZ8BfC9TRnlOyruIh1eYQsHA06toK4Z", title: "Future City Center", description: "Next-generation urban planning" }
 ];
 
 // Array to dynamically generate form fields
@@ -218,7 +219,7 @@ export default function Home() {
                 <div className="aspect-video bg-black relative">
                   <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    src="https://4b9moeer4y.ufs.sh/f/pUvyWRtocgCVPCzh0Yc5fO0F7gxzCkqZ8RdsrnA1myiuwj6h"
                     title="Richmond Land Innovations Property Showcase"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
